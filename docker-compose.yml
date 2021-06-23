@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  express:
+    build: 
+      context: .
+    container_name: "express-server"
+    ports: 
+      - "3000:3000"
+    networks: 
+      - "default"
+
+  express-2:
+    image: bitnami/express
+    container_name: "express-server-2"
+    ports: 
+      - "4000:3000"
+    networks: 
+      - "default"
+
+  json-server:
+    image: williamyeh/json-server
+    ports:
+      - "8000:3000"
+networks: 
+  default:

@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "phoneNumber": "0720317402",
+      "password": "1234",
+      "countryCode": "",
+      "device": {
+        "status": 1,
+        "primaryImei": "123456789",
+        "secondaryImei": "",
+        "os": "",
+        "version": "",
+        "make": "Some make",
+        "internalMemAvailable": "",
+        "totalInternalMem": "",
+        "externalMemAvailable": "",
+        "totalExternalMem": ""
+      }
+    }
+  ]
+}
