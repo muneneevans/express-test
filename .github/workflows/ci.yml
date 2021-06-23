@@ -1,0 +1,36 @@
+name: Deploy to Production Server
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        env:
+          BRANCH: "master"
+
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          key: ${{ secrets.PROD_KEY }}
+          port: ${{ secrets.PROD_PORT }}
+          timeout: 200m
+          command_timeout: 200m
+          envs: BRANCH,
+          script_stop: true
+          script: |
+            cd express
+            git config user.email "dev@vorane.com"
+            git config user.name "Vorane Studios"
+            git checkout $BRANCH            
+            git branch --set-upstream-to origin/$BRANCH
+            git pull origin $BRANCH            
+            docker-compose up -d --build --force-recreate
