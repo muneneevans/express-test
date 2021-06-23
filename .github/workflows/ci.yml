@@ -34,3 +34,4 @@ jobs:
             git branch --set-upstream-to origin/$BRANCH
             git pull origin $BRANCH            
             docker-compose up -d --build --force-recreate
+
