@@ -9,14 +9,6 @@ services:
     networks: 
       - "default"
 
-  express-2:
-    image: bitnami/express
-    container_name: "express-server-2"
-    ports: 
-      - "4000:3000"
-    networks: 
-      - "default"
-
   json-server:
     image: williamyeh/json-server
     ports:
